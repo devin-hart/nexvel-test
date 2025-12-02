@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Hero = ({ title, subtitle, titleSuffix, description }) => {
+const Hero = ({ title, subtitle, titleSuffix, description, centered = false }) => {
   return (
-    <header className='mb-8'>
+    <header className={`mb-8 ${centered ? 'text-center' : ''}`}>
       <h1 className="font-libre font-light mb-2 tracking-wide leading-none">
         <span
           className="block"
@@ -23,7 +23,7 @@ const Hero = ({ title, subtitle, titleSuffix, description }) => {
           {titleSuffix}
         </span>
       </h1>
-      <p className="text-gray-300 leading-relaxed max-w-md text-sm font-euclid mt-6">
+      <p className={`text-gray-300 leading-relaxed max-w-md text-sm font-euclid mt-6 ${centered ? 'mx-auto' : ''}`}>
         {description}
       </p>
     </header>

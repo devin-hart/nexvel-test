@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const SubcategoryList = ({ 
   subcategories, 
@@ -32,9 +33,11 @@ const SubcategoryList = ({
                 <span className="flex items-center gap-3">
                   <span className="w-8 h-8 flex items-center justify-center" aria-hidden="true">
                     {subcategory.icon ? (
-                      <img
+                      <Image
                         src={subcategory.icon}
                         alt=""
+                        width={20}
+                        height={20}
                         className="w-5 h-5 object-contain"
                         style={{
                           filter: activeAccordion === key
@@ -57,9 +60,11 @@ const SubcategoryList = ({
             {activeAccordion === key && (
               <div className="p-4 bg-[#111111]">
                 <figure className="mb-4">
-                  <img
+                  <Image
                     src={subcategory.image || "/api/placeholder/600/400"}
                     alt={subcategory.title}
+                    width={600}
+                    height={256}
                     className="w-full h-64 object-cover"
                   />
                 </figure>
@@ -107,9 +112,11 @@ const SubcategoryList = ({
               <span className="flex items-center gap-3">
                 <span className="w-8 h-8 flex items-center justify-center" aria-hidden="true">
                   {subcategory.icon ? (
-                    <img
+                    <Image
                       src={subcategory.icon}
                       alt=""
+                      width={20}
+                      height={20}
                       className="w-5 h-5 object-contain"
                       style={{
                         filter: activeSubcategory === key

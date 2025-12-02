@@ -5,6 +5,7 @@ import Navigation from './Navigation';
 import Hero from './Hero';
 import SubcategoryList from './SubcategoryList';
 import ContentArea from './ContentArea';
+import Loader from './Loader';
 
 const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
   const [activeSubcategory, setActiveSubcategory] = useState(null);
@@ -45,11 +46,7 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
   };
 
   if (!data) {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-2xl">Loading...</div>
-      </div>
-    );
+    return <Loader />;
   }
 
   const currentSubcategories = data.categories[activeCategory]?.subcategories || {};
@@ -62,7 +59,7 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white animate-fadeIn">
       {!isMobile && (
         <Navigation 
           activeCategory={activeCategory}
@@ -72,9 +69,9 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
       )}
       
       {isMobile ? (
-        <main className="pt-16 px-4">
-          <section className="text-center mb-4">
-            <Hero {...data.hero} />
+        <main className="pt-16 px-4 pb-24">
+          <section className="mb-4">
+            <Hero {...data.hero} centered={true} />
           </section>
 
           <section aria-label="Category Navigation">
@@ -100,9 +97,9 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
         </main>
       ) : (
         // Desktop Layout
-        <main className="min-h-screen flex justify-center items-center p-8">
-          <div className="flex justify-center items-start gap-8 w-full max-w-screen-2xl mx-auto">
-            <section className="flex-1" aria-labelledby="category-details">
+        <main className="min-h-screen flex justify-center items-center p-8 pb-32">
+          <div className="flex justify-center items-start gap-16 w-full max-w-screen-2xl mx-auto">
+            <section className="pt-12" aria-labelledby="category-details">
               <h2 id="category-details" className="sr-only">{categoryTitle} Details and Options</h2>
               <Hero {...data.hero} />
               <SubcategoryList
@@ -111,8 +108,8 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
                 onSubcategoryChange={handleSubcategoryChange}
               />
             </section>
-  
-            <section className="flex-1" style={{ maxWidth: '803px' }} aria-live="polite">
+
+            <section style={{ maxWidth: '803px' }} aria-live="polite">
               <ContentArea
                 subcategory={selectedSubcategoryData}
                 getQuoteLink={data.globalSettings.getQuoteLink}

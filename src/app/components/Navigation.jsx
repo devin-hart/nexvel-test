@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, categories, isRouted = false }) => {
   // Fallback categories if not provided
@@ -21,9 +22,11 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
             const buttonContent = (
               <>
                 {category.icon ? (
-                  <img
+                  <Image
                     src={category.icon}
                     alt=""
+                    width={20}
+                    height={20}
                     className="w-5 h-5"
                     style={{
                       filter: isActive
@@ -72,8 +75,8 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
   }
 
   return (
-    <nav className="flex justify-center py-8" aria-label="Category navigation">
-      <ul className="flex bg-[#0a0a0a] backdrop-blur-sm rounded-full px-6 border border-[#424242] list-none gap-6">
+    <nav className="flex justify-center pt-8" aria-label="Category navigation">
+      <ul className="flex bg-[#0a0a0a] backdrop-blur-sm rounded-full px-4 border border-[#424242] list-none gap-4">
         {categoryList.map((category) => {
           const isActive = activeCategory === category.key;
 
@@ -81,9 +84,11 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
             <span className="relative py-3 block">
               <span className="text-sm font-medium transition-all duration-300 flex items-center gap-2">
                 {category.icon ? (
-                  <img
+                  <Image
                     src={category.icon}
                     alt=""
+                    width={20}
+                    height={20}
                     className="w-5 h-5"
                     style={{
                       filter: isActive
@@ -105,7 +110,7 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
           );
 
           return (
-            <li key={category.key}>
+            <li key={category.key} className="mx-4">
               {isRouted ? (
                 <Link
                   href={category.href || '#'}

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const ContentArea = ({ 
   subcategory, 
@@ -18,18 +19,21 @@ const ContentArea = ({
   return (
     <article className="space-y-6">
       <figure className="mb-8">
-        <img
+        <Image
           src={subcategory.image || "/api/placeholder/600/400"}
           alt={subcategory.title}
-          className="w-full h-96 object-cover"
+          width={600}
+          height={554}
+          className="w-full object-cover"
+          style={{ maxHeight: '554px' }}
         />
       </figure>
 
       <div className="space-y-6">
-        <h2 className="font-light leading-tight font-euclid" style={{ fontSize: 'clamp(1.25rem, 1rem + 2vw, 3.5rem)' }}>
+        <h2 className="font-light leading-tight font-euclid mb-2" style={{ fontSize: 'clamp(1.25rem, 1rem + 2vw, 3.5rem)' }}>
           {subcategory.title}
         </h2>
-        <p className="text-gray-300 leading-relaxed text-sm">
+        <p className="text-gray-300 leading-relaxed text-sm mb-2">
           {subcategory.description}
         </p>
         <div className="flex gap-4 pt-4">
