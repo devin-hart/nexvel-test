@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+/* Add these to your existing globals.css file */
+
+:root {
+  --font-euclid: 'Euclid Circular', system-ui, sans-serif;
+  --font-libre: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Custom font utility classes */
+.font-euclid {
+  font-family: var(--font-euclid);
+}
+
+.font-libre {
+  font-family: var(--font-libre);
+}
+
+/* Set default body font */
+body {
+  font-family: var(--font-euclid);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
