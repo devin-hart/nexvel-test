@@ -35,7 +35,7 @@ const SubcategoryList = ({
                     {subcategory.icon ? (
                       <Image
                         src={subcategory.icon}
-                        alt=""
+                        alt={subcategory.iconAlt || ""}
                         width={20}
                         height={20}
                         className="w-5 h-5 object-contain"
@@ -62,26 +62,26 @@ const SubcategoryList = ({
                 <figure className="mb-4">
                   <Image
                     src={subcategory.image || "/api/placeholder/600/400"}
-                    alt={subcategory.title}
+                    alt={subcategory.imageAlt || subcategory.title}
                     width={600}
                     height={256}
                     className="w-full h-64 object-cover"
                   />
                 </figure>
                 <h4 className="font-light leading-tight font-euclid mb-4" style={{ fontSize: 'clamp(1.25rem, 1rem + 2vw, 3.5rem)' }}>{subcategory.title}</h4>
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                <p className="text-gray-300 text-[13px] leading-relaxed mb-6">
                   {subcategory.description}
                 </p>
                 <div className="flex gap-4">
                   <a
                     href={getQuoteLink}
-                    className="px-8 py-3 bg-[#A7A86E] text-white rounded-full font-medium text-sm border border-[#A7A86E] hover:bg-transparent hover:text-[#A7A86E] transition-all duration-300"
+                    className="flex-1 px-4 py-3 bg-[#A7A86E] text-white rounded-full font-medium text-xs border border-[#A7A86E] hover:bg-transparent hover:text-[#A7A86E] transition-all duration-300 text-center"
                   >
                     {getQuoteText}
                   </a>
                   <a
                     href={bookOnlineLink}
-                    className="px-8 py-3 bg-white text-black rounded-full font-medium text-sm border border-white hover:bg-transparent hover:text-white transition-all duration-300"
+                    className="flex-1 px-4 py-3 bg-white text-black rounded-full font-medium text-xs border border-white hover:bg-transparent hover:text-white transition-all duration-300 text-center"
                   >
                     {bookOnlineText}
                   </a>
@@ -114,7 +114,7 @@ const SubcategoryList = ({
                   {subcategory.icon ? (
                     <Image
                       src={subcategory.icon}
-                      alt=""
+                      alt={subcategory.iconAlt || ""}
                       width={20}
                       height={20}
                       className="w-5 h-5 object-contain"

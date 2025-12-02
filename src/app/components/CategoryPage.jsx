@@ -53,9 +53,9 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
   
   // Build navigation with current page active
   const categories = [
-    { key: 'experience', label: data.categories.experience.label, icon: data.categories.experience.icon, href: '/experience' },
-    { key: 'care', label: data.categories.care.label, icon: data.categories.care.icon, href: '/we-care' },
-    { key: 'safety', label: data.categories.safety.label, icon: data.categories.safety.icon, href: '/safety' }
+    { key: 'experience', label: data.categories.experience.label, icon: data.categories.experience.icon, iconAlt: data.categories.experience.iconAlt, href: '/experience' },
+    { key: 'care', label: data.categories.care.label, icon: data.categories.care.icon, iconAlt: data.categories.care.iconAlt, href: '/we-care' },
+    { key: 'safety', label: data.categories.safety.label, icon: data.categories.safety.icon, iconAlt: data.categories.safety.iconAlt, href: '/safety' }
   ];
 
   return (

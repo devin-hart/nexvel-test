@@ -142,23 +142,30 @@ function transformWordPressData(wpData) {
       experience: {
         label: fields.experienceCategory?.label || "EXPERIENCE",
         icon: fields.experienceCategory?.icon?.node?.sourceUrl || null,
+        iconAlt: fields.experienceCategory?.icon?.node?.altText || "",
         subcategories: transformSubcategories(fields.experienceCategory?.subcategories || [])
       },
       care: {
-        label: fields.careCategory?.label || "WE CARE", 
+        label: fields.careCategory?.label || "WE CARE",
         icon: fields.careCategory?.icon?.node?.sourceUrl || null,
+        iconAlt: fields.careCategory?.icon?.node?.altText || "",
         subcategories: transformSubcategories(fields.careCategory?.subcategories || [])
       },
       safety: {
         label: fields.safetyCategory?.label || "SAFETY",
         icon: fields.safetyCategory?.icon?.node?.sourceUrl || null,
+        iconAlt: fields.safetyCategory?.icon?.node?.altText || "",
         subcategories: transformSubcategories(fields.safetyCategory?.subcategories || [])
       }
     },
     globalSettings: {
-      getQuoteLink: fields.globalSettings?.getQuoteLink || "#",
-      getQuoteText: fields.globalSettings?.getQuoteText || "GET A QUOTE", 
-      bookOnlineLink: fields.globalSettings?.bookOnlineLink || "#",
+      getQuoteLink: fields.globalSettings?.getQuoteLink === "https://devin-hart-nexvel-test.netlify.app/#"
+        ? "#"
+        : fields.globalSettings?.getQuoteLink || "#",
+      getQuoteText: fields.globalSettings?.getQuoteText || "GET A QUOTE",
+      bookOnlineLink: fields.globalSettings?.bookOnlineLink === "https://devin-hart-nexvel-test.netlify.app/#"
+        ? "#"
+        : fields.globalSettings?.bookOnlineLink || "#",
       bookOnlineText: fields.globalSettings?.bookOnlineText || "BOOK ONLINE"
     }
   };
@@ -166,16 +173,18 @@ function transformWordPressData(wpData) {
 
 function transformSubcategories(subcategories) {
   const transformed = {};
-  
+
   subcategories.forEach((sub, index) => {
     const key = sub.title?.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-') || `subcategory-${index}`;
     transformed[key] = {
       title: sub.title || "",
       description: sub.description || "",
       icon: sub.icon?.node?.sourceUrl || null,
-      image: sub.image?.node?.sourceUrl || "/api/placeholder/600/400"
+      iconAlt: sub.icon?.node?.altText || "",
+      image: sub.image?.node?.sourceUrl || "/api/placeholder/600/400",
+      imageAlt: sub.image?.node?.altText || ""
     };
   });
-  
+
   return transformed;
 }

@@ -24,7 +24,7 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
                 {category.icon ? (
                   <Image
                     src={category.icon}
-                    alt=""
+                    alt={category.iconAlt || ""}
                     width={20}
                     height={20}
                     className="w-5 h-5"
@@ -81,25 +81,24 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
           const isActive = activeCategory === category.key;
 
           const buttonContent = (
-            <span className="relative py-3 block">
+            <span className="relative py-3 block group">
               <span className="text-sm font-medium transition-all duration-300 flex items-center gap-2">
                 {category.icon ? (
                   <Image
                     src={category.icon}
-                    alt=""
+                    alt={category.iconAlt || ""}
                     width={20}
                     height={20}
-                    className="w-5 h-5"
-                    style={{
-                      filter: isActive
-                        ? 'brightness(0) saturate(100%) invert(70%) sepia(12%) saturate(1084%) hue-rotate(58deg) brightness(94%) contrast(88%)'
-                        : 'brightness(0) invert(0.6)'
-                    }}
+                    className={`w-5 h-5 transition-all duration-300 ${
+                      isActive
+                        ? 'filter-[brightness(0)_saturate(100%)_invert(70%)_sepia(12%)_saturate(1084%)_hue-rotate(58deg)_brightness(94%)_contrast(88%)]'
+                        : 'filter-[brightness(0)_invert(1)] group-hover:filter-[brightness(0)_saturate(100%)_invert(70%)_sepia(12%)_saturate(1084%)_hue-rotate(58deg)_brightness(94%)_contrast(88%)]'
+                    }`}
                   />
                 ) : (
                   <span className="text-lg" aria-hidden="true">🔸</span>
                 )}
-                <span className={isActive ? 'text-[#A7A86E]' : 'text-gray-300 hover:text-white'}>
+                <span className={`transition-colors duration-300 ${isActive ? 'text-[#A7A86E]' : 'text-white group-hover:text-[#A7A86E]'}`}>
                   {category.label}
                 </span>
               </span>
