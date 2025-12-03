@@ -30,9 +30,9 @@ const ContentArea = ({
 
       <div className="space-y-6">
         <h2 
-          className="font-light font-euclid mb-4 leading-[24px] md:leading-[60px] tracking-[0.02em] text-[clamp(1.25rem,1rem_+_2vw,3.5rem)]" 
+            className="font-light font-euclid mb-4 tracking-[0.02em] text-[clamp(1.25rem,1rem_+_2vw,3.5rem)] leading-[clamp(24px,1.2rem_+_2vw,60px)]"
         >
-          {subcategory.title}
+            {subcategory.title}
         </h2>
         <p className="text-gray-300 leading-relaxed text-[13px] md:text-base mb-2">
           {subcategory.description}

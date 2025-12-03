@@ -5,17 +5,17 @@ const Hero = ({ title, subtitle, titleSuffix, description, centered = false }) =
     <header className={`mb-6 ${centered ? 'text-center' : ''}`}>
       <h2 className="font-libre font-light mb-2 tracking-wide leading-none">
         <span
-          className="block mb-2 text-[clamp(2.25rem,1rem+5vw,5.625rem)]"
+          className="block mb-2 text-[clamp(2.25rem,1rem+4vw,5.625rem)]"
         >
           {title}
         </span>
         <span
-          className="block text-[#A7A86E] italic font-libre font-light mb-2 text-[clamp(1.5rem,1rem+2.5vw,3.75rem)]"
+          className="block text-[#A7A86E] italic font-libre font-light mb-2 text-[clamp(1.5rem,1rem+2.4vw,3.75rem)]"
         >
           {subtitle}
         </span>
         <span
-          className="block font-libre font-light text-[clamp(2.25rem,1rem+5vw,5.625rem)]"
+          className="block font-libre font-light text-[clamp(2.25rem,1rem+4vw,5.625rem)]"
         >
           {titleSuffix}
         </span>
