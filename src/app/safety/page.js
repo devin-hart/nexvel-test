@@ -9,8 +9,6 @@ export const metadata = {
   openGraph: {
     title: 'Safety - ABC Transportation',
     description: 'Safe and secure transportation with certified drivers and comprehensive accountability measures.',
-    type: 'website',
-    url: 'https://yourdomain.com/safety',
   },
 };
 
@@ -35,6 +33,9 @@ export default async function SafetyPage() {
     );
   }
 
+  // Get the base URL safely
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://devin-hart-nexvel-test.netlify.app';
+
   return (
     <>
       <script
@@ -47,7 +48,8 @@ export default async function SafetyPage() {
             "description": "Safe and secure transportation services with certified drivers and comprehensive accountability measures.",
             "provider": {
               "@type": "Organization",
-              "name": "ABC Transportation"
+              "name": "ABC Transportation",
+              "url": baseUrl
             },
             "serviceType": "Safe Transportation",
             "offers": data.categories.safety.subcategories && Object.values(data.categories.safety.subcategories).map(sub => ({

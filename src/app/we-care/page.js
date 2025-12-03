@@ -9,8 +9,6 @@ export const metadata = {
   openGraph: {
     title: 'We Care - ABC Transportation',
     description: 'Customer-focused transportation services with unmatched standards and 24/7 support.',
-    type: 'website',
-    url: 'https://yourdomain.com/we-care',
   },
 };
 
@@ -35,6 +33,9 @@ export default async function WeCarePage() {
     );
   }
 
+  // Get the base URL safely
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://devin-hart-nexvel-test.netlify.app';
+
   return (
     <>
       <script
@@ -47,7 +48,8 @@ export default async function WeCarePage() {
             "description": "Customer-focused transportation services with unmatched standards, easy booking, and 24/7 support.",
             "provider": {
               "@type": "Organization",
-              "name": "ABC Transportation"
+              "name": "ABC Transportation",
+              "url": baseUrl
             },
             "serviceType": "Customer Service",
             "offers": data.categories.care.subcategories && Object.values(data.categories.care.subcategories).map(sub => ({

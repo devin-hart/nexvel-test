@@ -9,8 +9,6 @@ export const metadata = {
   openGraph: {
     title: 'Transportation Experience - ABC Transportation',
     description: 'Premium transportation services with professional drivers and real-time tracking.',
-    type: 'website',
-    url: 'https://yourdomain.com/experience',
   },
 };
 
@@ -35,6 +33,9 @@ export default async function ExperiencePage() {
     );
   }
 
+  // Get the base URL safely
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://devin-hart-nexvel-test.netlify.app';
+
   return (
     <>
       <script
@@ -47,7 +48,8 @@ export default async function ExperiencePage() {
             "description": "Premium transportation services including comprehensive driver clearances, real-time GPS tracking, and accessible vehicles.",
             "provider": {
               "@type": "Organization",
-              "name": "ABC Transportation"
+              "name": "ABC Transportation",
+              "url": baseUrl
             },
             "serviceType": "Transportation Service",
             "offers": data.categories.experience.subcategories && Object.values(data.categories.experience.subcategories).map(sub => ({

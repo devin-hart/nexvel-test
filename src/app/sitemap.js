@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://www.yourdomain.com'; // Change this to your actual domain
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'; // Change this to your actual domain
 
   return [
     {
