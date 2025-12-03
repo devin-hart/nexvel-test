@@ -26,7 +26,7 @@ export default async function SafetyPage() {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <h1>Safety - ABC Transportation</h1>
+          <h2>Safety - ABC Transportation</h2>
           <p>Loading safety information...</p>
         </div>
       </div>

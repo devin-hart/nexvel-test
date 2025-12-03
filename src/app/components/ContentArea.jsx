@@ -18,25 +18,26 @@ const ContentArea = ({
 
   return (
     <article className="space-y-6">
-      <figure className="mb-8">
+      <figure className="mb-10">
         <Image
           src={subcategory.image || "/api/placeholder/600/400"}
           alt={subcategory.imageAlt || subcategory.title}
           width={600}
           height={554}
-          className="w-full object-cover"
-          style={{ maxHeight: '554px' }}
+          className="w-full object-cover max-h-[554px]"
         />
       </figure>
 
       <div className="space-y-6">
-        <h2 className="font-light leading-tight font-euclid mb-2" style={{ fontSize: 'clamp(1.25rem, 1rem + 2vw, 3.5rem)' }}>
+        <h2 
+          className="font-light font-euclid mb-4 leading-[24px] md:leading-[60px] tracking-[0.02em] text-[clamp(1.25rem,1rem_+_2vw,3.5rem)]" 
+        >
           {subcategory.title}
         </h2>
         <p className="text-gray-300 leading-relaxed text-[13px] md:text-base mb-2">
           {subcategory.description}
         </p>
-        <div className="flex flex-col lg:flex-row gap-4 pt-4">
+        <div className="flex flex-col lg:flex-row gap-2 pt-4">
           <a
             href={getQuoteLink}
             className="flex-1 lg:flex-none lg:max-w-[188px] px-4 md:px-8 py-3 bg-[#A7A86E] text-white rounded-full font-medium text-xs md:text-sm border border-[#A7A86E] hover:bg-transparent hover:text-[#A7A86E] transition-all duration-300 text-center"

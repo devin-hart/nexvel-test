@@ -26,7 +26,7 @@ export default async function WeCarePage() {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <h1>We Care - ABC Transportation</h1>
+          <h2>We Care - ABC Transportation</h2>
           <p>Loading customer care information...</p>
         </div>
       </div>

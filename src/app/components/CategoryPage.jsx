@@ -8,12 +8,65 @@ import ContentArea from './ContentArea';
 import Loader from './Loader';
 
 const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
-  const [activeSubcategory, setActiveSubcategory] = useState(null);
-  const [activeAccordion, setActiveAccordion] = useState(null);
+  // 1. Calculate the defaults synchronously before state initialization
+  // This prevents the need for a useEffect to set "initial" values
+  let defaultKey = null;
+  let defaultData = null;
+
+  if (data && data.categories[activeCategory]?.subcategories) {
+    const subcategoryEntries = Object.entries(data.categories[activeCategory].subcategories);
+    if (subcategoryEntries.length > 0) {
+      defaultKey = subcategoryEntries[0][0];
+      defaultData = subcategoryEntries[0][1];
+    }
+  }
+
+  // 2. Initialize state with the calculated defaults
+  const [activeSubcategory, setActiveSubcategory] = useState(defaultKey);
+  const [activeAccordion, setActiveAccordion] = useState(defaultKey);
+  const [selectedSubcategoryData, setSelectedSubcategoryData] = useState(defaultData);
   const [isMobile, setIsMobile] = useState(false);
-  const [selectedSubcategoryData, setSelectedSubcategoryData] = useState(null);
 
   useEffect(() => {
+    console.log(
+      `%c
+▓█████▄ ▓█████ ██▒   █▓ ██▓ ███▄    █ 
+▒██▀ ██▌▓█   ▀▓██░   █▒▓██▒ ██ ▀█   █ 
+░██   █▌▒███   ▓██  █▒░▒██▒▓██  ▀█ ██▒
+░▓█▄   ▌▒▓█  ▄  ▒██ █░░░██░▓██▒  ▐▌██▒
+░▒████▓ ░▒████▒  ▒▀█░  ░██░▒██░   ▓██░
+ ▒▒▓  ▒ ░░ ▒░ ░  ░ ▐░  ░▓  ░ ▒░   ▒ ▒ 
+ ░ ▒  ▒  ░ ░  ░  ░ ░░   ▒ ░░ ░░   ░ ▒░
+ ░ ░  ░    ░       ░░   ▒ ░   ░   ░ ░ 
+   ░       ░  ░     ░   ░           ░ 
+ ░                 ░                  
+ ██░ ██  ▄▄▄       ██▀███  ▄▄▄█████▓  
+▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓  ██▒ ▓▒  
+▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒▒ ▓██░ ▒░  
+░▓█ ░██ ░██▄▄▄▄██ ▒██▀▀█▄  ░ ▓██▓ ░   
+░▓█▒░██▓ ▓█   ▓██▒░██▓ ▒██▒  ▒██▒ ░   
+ ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒▓ ░▒▓░  ▒ ░░     
+ ▒ ░▒░ ░  ▒   ▒▒ ░  ░▒ ░ ▒░    ░      
+ ░  ░░ ░  ░   ▒     ░░   ░   ░        
+ ░  ░  ░      ░  ░   ░                
+                                      
+NeXVel Solutions Test Site
+
+%cThanks for taking the time to check out my test site.
+Hopefully it passes the test and we'll have an opportunity to work together.
+
+Check out more of my work here: %chttps://www.devinh.art/
+%cContact: %cdevohart@gmail.com %c- %c215-688-7294
+`,
+      'color: #39ff14; font-weight: bold;', // Neon Green Art
+      'color: inherit;',
+      'color: magenta; font-weight: bold;',
+      'color: inherit;',
+      'color: magenta; font-weight: bold;',
+      'color: inherit;',
+      'color: magenta; font-weight: bold;'
+    );
+
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -22,19 +75,6 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  useEffect(() => {
-    // Set default active subcategory and accordion when page loads
-    if (data && data.categories[activeCategory]?.subcategories) {
-      const subcategoryEntries = Object.entries(data.categories[activeCategory].subcategories);
-      if (subcategoryEntries.length > 0) {
-        const [firstKey, firstData] = subcategoryEntries[0];
-        setActiveSubcategory(firstKey);
-        setSelectedSubcategoryData(firstData);
-        setActiveAccordion(firstKey); // Set the first accordion item to be open on mobile
-      }
-    }
-  }, [data, activeCategory]);
 
   const handleSubcategoryChange = (key, subcategoryData) => {
     setActiveSubcategory(key);
@@ -69,7 +109,7 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
       )}
       
       {isMobile ? (
-        <main className="pt-16 px-4 pb-24">
+        <main className="pt-16 px-4 pb-16">
           <section className="mb-4">
             <Hero {...data.hero} centered={true} />
           </section>
@@ -109,7 +149,7 @@ const CategoryPage = ({ data, activeCategory, categoryTitle }) => {
               />
             </section>
 
-            <section style={{ maxWidth: '803px' }} aria-live="polite">
+            <section className='max-w-[803px]' aria-live="polite">
               <ContentArea
                 subcategory={selectedSubcategoryData}
                 getQuoteLink={data.globalSettings.getQuoteLink}

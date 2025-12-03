@@ -19,7 +19,7 @@ const SubcategoryList = ({
     return (
       <section aria-label="Service features">
         {Object.entries(subcategories).map(([key, subcategory]) => (
-          <article key={key} className="border-b border-[#333333]">
+          <article key={key} className={activeAccordion === key ? "" : "border-b border-[#333333]"}>
             <h3>
               <button
                 onClick={() => onAccordionToggle(key)}
@@ -49,7 +49,7 @@ const SubcategoryList = ({
                       <span className="text-xl opacity-80">🔸</span>
                     )}
                   </span>
-                  <span className={`font-normal tracking-wide font-euclid text-xs ${
+                  <span className={`font-bold tracking-[0.16em] font-euclid text-xs leading-[20px] ${
                     activeAccordion === key ? 'text-[#A7A86E]' : 'text-gray-300'
                   }`}>
                     {subcategory.title?.toUpperCase()}
@@ -69,7 +69,7 @@ const SubcategoryList = ({
                   />
                 </figure>
                 <h4 className="font-light leading-tight font-euclid mb-4" style={{ fontSize: 'clamp(1.25rem, 1rem + 2vw, 3.5rem)' }}>{subcategory.title}</h4>
-                <p className="text-gray-300 text-[13px] leading-relaxed mb-6">
+                <p className="text-gray-300 text-[13px] leading-relaxed mb-4">
                   {subcategory.description}
                 </p>
                 <div className="flex gap-4">
@@ -128,7 +128,7 @@ const SubcategoryList = ({
                     <span className="text-xl opacity-80">🔸</span>
                   )}
                 </span>
-                <span className={`font-normal tracking-wide font-euclid text-xs ${
+                <span className={`font-bold tracking-[0.07em] font-euclid text-xs leading-[24px] ${
                   activeSubcategory === key ? 'text-[#A7A86E]' : 'text-gray-300'
                 }`}>
                   {subcategory.title?.toUpperCase()}

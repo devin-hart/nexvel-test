@@ -41,7 +41,7 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
               </>
             );
 
-            const buttonClasses = `min-w-[158px] px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 flex items-center justify-center gap-2 border ${
+            const buttonClasses = `min-w-[158px] px-4 py-2 rounded-full text-xs font-[400] transition-all duration-300 flex items-center justify-center gap-2 border ${
               isActive
                 ? 'bg-transparent border-[#A7A86E] text-[#A7A86E]'
                 : 'bg-transparent border-white text-white'
@@ -81,7 +81,13 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
           const isActive = activeCategory === category.key;
 
           const buttonContent = (
-            <span className="relative py-3 block group">
+            <span 
+              className={`relative py-3 block group ${
+                isActive 
+                  ? "after:absolute after:-bottom-[1px] after:left-0 after:right-0 after:h-0.5 after:bg-[#A7A86E] after:content-['']" 
+                  : ""
+              }`}
+            >
               <span className="text-sm font-medium transition-all duration-300 flex items-center gap-2">
                 {category.icon ? (
                   <Image
@@ -102,9 +108,6 @@ const Navigation = ({ activeCategory, onCategoryChange, isMobile = false, catego
                   {category.label}
                 </span>
               </span>
-              {isActive && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#A7A86E]" aria-hidden="true"></span>
-              )}
             </span>
           );
 

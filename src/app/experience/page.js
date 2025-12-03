@@ -26,7 +26,7 @@ export default async function ExperiencePage() {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <h1>Experience - ABC Transportation</h1>
+          <h2>Experience - ABC Transportation</h2>
           <p>Loading transportation experience information...</p>
         </div>
       </div>
